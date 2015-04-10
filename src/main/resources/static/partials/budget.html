@@ -1,0 +1,67 @@
+<div ng-show="showBudgetList">
+  <h3>Project {{project.name}}</h3>
+  <h4>Budgets</h4>
+  <table>
+    <tr><th>Id</th><th>Name</th><th>Actions</th></tr>
+    <tr ng-repeat="budget in budgets">
+      <td>{{budget.id}}</td>
+      <td>{{budget.name}}</td>
+      <td><input type="button" ng-click="editForecast(budget.id)" value="Edit" /></td>
+    </tr>
+  </table>
+  <button ng-click="addAnother()">Add Another</button>
+</div>
+<div ng-show="showForm">
+  <h4>Add Budget</h4>
+  <form novalidate class="css-form">
+    Name: <input type="text" ng-model="budget.name" /><br/>
+    <input type="button" ng-click="reset()" value="Reset" />
+    <input type="submit" ng-click="update(budget)" value="Save" />
+  </form>
+</div>
+<div ng-show="editForecasts">
+  <table>
+    <thead>
+      <tr>
+        <th>Role Type</th><th>Role Sub Type</th>
+        <th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>May</th><th>Jun</th>
+        <th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="fc in forecast">
+        <td>{{fc.roleType}}</td><td>{{fc.roleSubType}}</td>
+        <td><input type="text" ng-model="fc.janFTE" size="3"/></td>
+        <td><input type="text" ng-model="fc.febFTE" size="3"/></td>
+        <td><input type="text" ng-model="fc.marFTE" size="3"/></td>
+        <td><input type="text" ng-model="fc.aprFTE" size="3"/></td>
+        <td><input type="text" ng-model="fc.mayFTE" size="3"/></td>
+        <td><input type="text" ng-model="fc.junFTE" size="3"/></td>
+        <td><input type="text" ng-model="fc.julFTE" size="3"/></td>
+        <td><input type="text" ng-model="fc.augFTE" size="3"/></td>
+        <td><input type="text" ng-model="fc.sepFTE" size="3"/></td>
+        <td><input type="text" ng-model="fc.octFTE" size="3"/></td>
+        <td><input type="text" ng-model="fc.novFTE" size="3"/></td>
+        <td><input type="text" ng-model="fc.decFTE" size="3"/></td>
+        <td>
+          <button ng-click="removeResource(fc)">Remove</button>
+          <button ng-click="saveResource(fc)">Save</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button ng-click="addResource()">Add Another</button>
+</div>
+<div ng-show="showAddResource">
+  <form novalidate class="css-form">
+    Role Type: <select ng-blur="updateRoleSubTypes()" ng-model="resource.roleTypeId">
+    <option ng-repeat="rt in roleTypes" value="{{rt.id}}">{{rt.name}}</option>
+    </select><br/>
+    Role Sub Type: <select ng-model="resource.roleSubTypeId">
+    <option ng-repeat="rst in roleSubTypes" value="{{rst.id}}">{{rst.name}}</option>
+    </select><br/><br/>
+    FTE: <input type="number" min="0" max="1" ng-model="resource.fte"/><br/>
+    <input type="submit" ng-click="createResource()" value="Save" />
+  </form>
+</div>

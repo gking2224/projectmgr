@@ -1,0 +1,30 @@
+<div ng-show="showProjectList">
+  Search: <input type="text" ng-model="searchString">
+  <button ng-click="search()">Search</button>
+  <h4>Project List</h4>
+  <table>
+    <tr><th>Project</th><th>Status</th><th>Org Unit</th><th>Actions</th></tr>
+    <tr ng-repeat="project in projects">
+      <td><a href="#{{project.id}}">{{project.name}}</a>
+      <td>{{project.status}}</td>
+      <td><a href="#{{project.orgUnit.id}}">{{project.orgUnit.name}}</a></td>
+      <td><a href="#/budget/{{project.id}}">Budget</a></td>
+    </tr>
+  </table>
+  <button ng-click="addAnother()">Add Another</button>
+</div>
+<div ng-show="showForm">
+  <h4>Add/Update Project</h4>
+  <form novalidate class="css-form">
+    <input type="hidden" ng-model="project.id" />
+    Name: <input type="text" ng-model="project.name" /><br/>
+    Status: <input type="text" ng-model="project.status" value="Pending" /><br/>
+    Org Unit: <select ng-model="project.orgUnit.id">
+      <option ng-repeat="ou in orgunits" value="{{ou.id}}">
+      {{ou.name}}
+      </option>
+    </select><br/>
+    <input type="button" ng-click="reset()" value="Reset" />
+    <input type="submit" ng-click="update(project)" value="Save" />
+  </form>
+</div>
