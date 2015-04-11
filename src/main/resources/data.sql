@@ -1,2 +1,3 @@
-insert into roletype(id, name) values(1, 'Manager');
-insert into rolesubtype(id, roletype_id, name) values(1, 1, 'Project Manager');
+INSERT INTO roletype(id, name) VALUES (1,'Manager'),(2,'Developer');
+insert into rolesubtype(id, roletype_id, name) values (1,1,'Project Manager'),(2,1,'Delivery Manager'),(3,2,'Java Developer'),(4,2,'Oracle Developer');;
+insert into orgunit (id, parent_id, name, lead) values (1,NULL,'MegaBank','Ewan McRoss'),(2,1,'Services','Paul Hogan'),(3,2,'Transformation','Some Yank'),(4,3,'Risk Solutions','Dan Localman'),(5,4,'Wholesale Credit Risk','Bobby Kekkers'),(6,5,'PCDD','Reggie Skeleton');
