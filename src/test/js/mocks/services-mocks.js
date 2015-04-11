@@ -1,2 +1,6 @@
 'use-strict';
-angular.module('services', []);
+var mockSimpleServicesModule = angular.module('simpleServicesModule', []);
+
+mockSimpleServicesModule.factory('SimpleService',function() {
+  
+});

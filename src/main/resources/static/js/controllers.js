@@ -2,11 +2,14 @@
 
 /* Controllers */
 
-var simpleCtrlrs = angular.module('simpleCtrlrs', []);
-simpleCtrlrs.controller(
-    'SimpleCtrl', ['$http', '$scope', function($http, $scope) {
+var simpleCtrlModule = angular.module('simpleCtrlModule', ['simpleServicesModule']);
+
+simpleCtrlModule.controller(
+    'SimpleCtrl', ['$http', '$scope', 'SimpleService',
+                   function($http, $scope, SimpleService) {
       $scope.dummyFunction = function() {
         $scope.executedDummyTest = "yes";
+        $scope.value = SimpleService.getValue();
       }
     }]);
 

@@ -8,7 +8,6 @@ module.exports = function(config){
       'src/main/resources/static/bower_components/angular-route/angular-route.js',
       'src/main/resources/static/bower_components/angular-mocks/angular-mocks.js',
       'src/main/resources/static/js/**/*.js',
-      'src/test/js/mocks/**/*.js',
       'src/test/js/unit/**/*.js'
     ],
 
@@ -20,7 +19,6 @@ module.exports = function(config){
 
     plugins : [
             'karma-chrome-launcher',
-            'karma-firefox-launcher',
             'karma-jasmine'
             ],
 

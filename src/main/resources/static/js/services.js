@@ -1,6 +1,14 @@
 'use strict';
 
-var simpleModule = angular.module('simpleModule', []);
+
+var simpleServicesModule = angular.module('simpleServicesModule', []);
+
+simpleServicesModule.factory('SimpleService',function() {
+  var getValue = function() {
+    return "realValue";
+  }
+  return {getValue: getValue};
+});
 
 var services = angular.module('services', ['ngResource']);
 
